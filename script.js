@@ -1,8 +1,9 @@
 //THIS PROGRAM HERE, HANDLES THE USER DEPOSITE, IF THE USER ENTERS THE INVALID OR NON-NUMERIC VALUE THEN THE PROGRAM WILL REPEAT TILL THE USER ENTERS A VALID NUMBER AS INPUT.
 
-const prompt = require("prompt-sync")();
+const prompt = require("prompt-sync")(); //PROMPT MOUDLE REQURING FOR USER INPUT
 
 
+// GLOBAL VARIABLES DEFINED FOR THE USE LATER IN THE CODE
 const ROWS = 3;
 const COLS = 3;
 
@@ -19,6 +20,8 @@ const SYMBOLS_VALUES = {
     "C": 3,
     "D": 2
 }
+
+// DEPOSITE FUNCTION, CONTINUE ASKIG USER FOR A DEPOSITE, AND THE NUMBER OF LINES THEY WANT TO BET ON
 
 const deposite = () => {
     while (true) {
@@ -88,7 +91,7 @@ const spin = () => {
     return reels;
 }
 
-// THIS PROGRAM HERE WILL
+// THIS PROGRAM HERE, TRANSPOSES THE VALUES OF THE VARIABLES DEFINED ABOVE IN A MATRIX FORM
 
 const transPose = (reels) => {
     const rows = [];
@@ -103,14 +106,14 @@ const transPose = (reels) => {
     return rows;
 }
 
-//
+// THIS PROGRAM PRINTS THE VALUES IN A ROWS FORM
 
 const printRows = (rows) => {
     for (const row of rows) {
         let rowString = "";
-        for (const [i, symbol] of rows.entries()) {
-            rowString += symbol
-            if (i  rows.length - 1) {
+        for (const [i, symbol] of row.entries()) {
+            rowString += symbol;
+            if (i != row.length - 1) {
                 rowString += " | ";
             }
         }
@@ -118,10 +121,56 @@ const printRows = (rows) => {
     }
 }
 
-let balance = deposite();
-const numberOfLines = getNumberOfLines();
-const bet = getBet(balance, numberOfLines);
-const reels = spin();
-const rows = transPose(reels);
-console.log(rows);
+//
 
+ const getWinnings = (rows, bet, lines) => {
+    let winnings = 0;
+
+    for (let row = 0; row < lines; row++) {
+        const symbols = rows[row];
+        let allSame = true;
+
+        for (const symbol of symbols) {
+            if (symbol != symbols[0]) {
+                allSame = false;
+                break;
+            }
+        }
+
+        if (allSame) {
+            winnings += bet = SYMBOLS_VALUES[symbols[0]];
+        }
+    }
+
+    return winnings;
+ }
+
+ // THE GAME PROGARM ITSELF, THE ASKS THE USER IF THEY STILL WANT TO PLAY OF QUIT
+
+ const game = () => {
+    let balance = deposite();
+
+    while (true) {
+        console.log("Your have a balance of $" + balance);
+        const numberOfLines = getNumberOfLines();
+        const bet = getBet(balance, numberOfLines);
+        balance -= bet * numberOfLines;
+        const reels = spin();
+        const rows = transPose(reels);
+        printRows(rows);
+        const winnings = getWinnings(rows, bet, numberOfLines);
+        balance += winnings;
+        console.log("You won, $" + winnings.toString());
+
+        if (balance <= 0) {
+            console.log("You ran out of funds!");
+            break;
+        }
+
+        const playAgain = prompt("Do you want to continue? (y/n)") 
+        
+        if (playAgain != "y") break;
+    }
+ }
+
+ game();
