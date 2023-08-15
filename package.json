@@ -1,0 +1,15 @@
+{
+  "name": "slot-machine",
+  "version": "1.0.0",
+  "description": "slot machine for javascript preactice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kingsley Awoke",
+  "license": "ISC",
+  "dependencies": {
+    "install": "^0.13.0",
+    "prompt-sync": "^4.2.0"
+  }
+}
