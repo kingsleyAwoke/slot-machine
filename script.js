@@ -44,7 +44,7 @@ const getNumberOfLines = () => {
         const numberOfLines = parseFloat(lines);
 
         if (isNaN(numberOfLines) || numberOfLines <= 0 || numberOfLines > 3) {
-            console.log("Invalid number of lines, enter number between 1 -3");
+            console.log("Invalid number of lines, enter number between 1-3");
         } else {
             return numberOfLines;
         }
@@ -145,7 +145,7 @@ const printRows = (rows) => {
     return winnings;
  }
 
- // THE GAME PROGARM ITSELF, THE ASKS THE USER IF THEY STILL WANT TO PLAY OF QUIT
+ // THE GAME PROGARM ITSELF, ASKS THE USER IF THEY STILL WANT TO PLAY OR QUIT
 
  const game = () => {
     let balance = deposite();
