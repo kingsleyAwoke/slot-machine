@@ -1,9 +1,6 @@
-//THIS PROGRAM HERE, HANDLES THE USER DEPOSITE, IF THE USER ENTERS THE INVALID OR NON-NUMERIC VALUE THEN THE PROGRAM WILL REPEAT TILL THE USER ENTERS A VALID NUMBER AS INPUT.
-
 const prompt = require("prompt-sync")(); //PROMPT MOUDLE REQURING FOR USER INPUT
 
 
-// GLOBAL VARIABLES DEFINED FOR THE USE LATER IN THE CODE
 const ROWS = 3;
 const COLS = 3;
 
@@ -21,7 +18,6 @@ const SYMBOLS_VALUES = {
     "D": 2
 }
 
-// DEPOSITE FUNCTION, CONTINUE ASKIG USER FOR A DEPOSITE, AND THE NUMBER OF LINES THEY WANT TO BET ON
 
 const deposite = () => {
     while (true) {
@@ -36,7 +32,6 @@ const deposite = () => {
     }
 }
 
- //THIS PROGRAM HERE, HANDLES THE NUMBER OF LINE USER WANT TO BET, IF THE USER ENTERS THE INVALID OR NON-NUMERIC VALUE THEN THE PROGRAM WILL REPEAT TILL THE USER ENTERS A VALID A NUMBER BETWEEN 1 - 3.
 
 const getNumberOfLines = () => {
     while (true) {
@@ -51,7 +46,6 @@ const getNumberOfLines = () => {
     }
 }
 
-//THIS PROGRAM HERE, HANDLES THE VALUE OF THE BALANCE THE USER ENTERED, USE IT TO DETERMINE THE AMOUNT THE USER HAVE TO PLACE PER LINE.
 
 const getBet = (balance, lines) => {
     while (true) {
@@ -66,7 +60,6 @@ const getBet = (balance, lines) => {
     }
 }
 
-// THIS PROGRAM HERE WILL RANDOMLY SELECT THE VALUE OF THE VARIABLES DECLEARED ABOVE, AND DISPLAY THEM IN AN ARREY.
 
 const spin = () => {
     const symbols = [];
@@ -91,7 +84,6 @@ const spin = () => {
     return reels;
 }
 
-// THIS PROGRAM HERE, TRANSPOSES THE VALUES OF THE VARIABLES DEFINED ABOVE IN A MATRIX FORM
 
 const transPose = (reels) => {
     const rows = [];
@@ -106,7 +98,6 @@ const transPose = (reels) => {
     return rows;
 }
 
-// THIS PROGRAM PRINTS THE VALUES IN A ROWS FORM
 
 const printRows = (rows) => {
     for (const row of rows) {
@@ -145,7 +136,6 @@ const printRows = (rows) => {
     return winnings;
  }
 
- // THE GAME PROGARM ITSELF, ASKS THE USER IF THEY STILL WANT TO PLAY OR QUIT
 
  const game = () => {
     let balance = deposite();
